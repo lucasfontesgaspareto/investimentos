@@ -1,3 +1,4 @@
+import { getTimeSeries } from './AlphaVantage';
 import React, { Component } from 'react';
 import { Line } from 'react-chartjs-2';
 import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips';
@@ -23,61 +24,61 @@ let portfolio = [
         color: '#a2a79e',
       },
 
-      // {
-      //   sigla: 'EGIE3',
-      //   nome: 'Ambev S/A',
-      //   color: '#a27e8e',
-      // },
+      {
+        sigla: 'EGIE3',
+        nome: 'Ambev S/A',
+        color: '#a27e8e',
+      },
 
-      // {
-      //   sigla: 'GRND3',
-      //   nome: 'Ambev S/A',
-      //   color: '#a77464',
-      // },
+      {
+        sigla: 'GRND3',
+        nome: 'Ambev S/A',
+        color: '#a77464',
+      },
 
-      // {
-      //   sigla: 'TAEE11',
-      //   nome: 'Ambev S/A',
-      //   color: '#88292f',
-      // },
+      {
+        sigla: 'TAEE11',
+        nome: 'Ambev S/A',
+        color: '#88292f',
+      },
 
-      // {
-      //   sigla: 'WEGE3',
-      //   nome: 'Ambev S/A',
-      //   color: '#2e1e0f',
-      // },
+      {
+        sigla: 'WEGE3',
+        nome: 'Ambev S/A',
+        color: '#2e1e0f',
+      },
     ],
   },
 
-  // {
-  //   name: 'Fundos Imobiliários',
-  //   sigla: 'fii',
-  //   ativos: [
-  //     {
-  //       sigla: 'ABCP11',
-  //       nome: 'ABCP11',
-  //       color: '#46a790',
-  //     },
+ {
+   name: 'Fundos Imobiliários',
+   sigla: 'fii',
+   ativos: [
+     {
+       sigla: 'ABCP11',
+       nome: 'ABCP11',
+       color: '#46a790',
+     },
 
-  //     {
-  //       sigla: 'BCFF11',
-  //       nome: 'BCFF11',
-  //       color: '#6E5B04',
-  //     },
+     {
+       sigla: 'BCFF11',
+       nome: 'BCFF11',
+       color: '#6E5B04',
+     },
 
-  //     {
-  //       sigla: 'MXRF11',
-  //       nome: 'MXRF11',
-  //       color: '#FFF1D0',
-  //     },
+     {
+       sigla: 'MXRF11',
+       nome: 'MXRF11',
+       color: '#FFF1D0',
+     },
 
-  //     {
-  //       sigla: 'XPML11',
-  //       nome: 'XPML11',
-  //       color: '#086788',
-  //     },
-  //   ]
-  // }
+     {
+       sigla: 'XPML11',
+       nome: 'XPML11',
+       color: '#086788',
+     },
+   ]
+ }
 ];
 
 let ativo;
@@ -198,9 +199,21 @@ class Dashboard extends Component {
     this.onRadioBtnClick = this.onRadioBtnClick.bind(this);
 
     this.state = {
+      data: null,
       dropdownOpen: false,
       radioSelected: 2,
     };
+  }
+
+  componentDidMount() {
+    const siglasArrays = portfolio.map(item => item.ativos.map(ativo => ativo.sigla));
+    const siglas = siglasArrays.reduce((a, b) => a.concat(b), []);
+
+    // siglas.forEach(sigla => {
+    //   getTimeSeries(sigla).then(response => response.json())
+    //     .then(data => console.log(data))
+    //     .catch(e => console.log(e));
+    // });
   }
 
   toggle() {
