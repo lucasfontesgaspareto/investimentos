@@ -1,0 +1,9 @@
+{
+  "name": "investimentos",
+  "version": 2,
+  "regions": ["gru1"],
+  "public": true,
+  "github": {
+    "enabled": true
+  }
+}
