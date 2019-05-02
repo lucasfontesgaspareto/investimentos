@@ -7,7 +7,7 @@
     "enabled": true
   },
   "builds": [
-    { "src": "src/index.js", "use": "@now/node" },
-    { "src": "public/index.html", "use": "@now/static" }
+    { "src": "package.json", "use": "@now/static-build" },
+    { "src": "*.js", "use": "@now/node" }
   ]
 }
