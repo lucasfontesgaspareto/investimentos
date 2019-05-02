@@ -5,5 +5,9 @@
   "public": true,
   "github": {
     "enabled": true
-  }
+  },
+  "builds": [
+    { "src": "src/index.js", "use": "@now/node" },
+    { "src": "public/index.html", "use": "@now/static" }
+  ]
 }
